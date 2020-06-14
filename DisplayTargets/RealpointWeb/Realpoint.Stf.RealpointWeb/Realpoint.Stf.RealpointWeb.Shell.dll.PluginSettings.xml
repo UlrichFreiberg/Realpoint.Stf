@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<configuration xmlns="http://www.testautomation.com/yacf" version="2013.04.21.0">
+
+  <section name="Environments" defaultsection="Prod">
+    <section name="Prod">
+      <section name="DisplayTargets">
+        <section name="RealpointWeb">
+          <key name="BaseUrl" value="https://www.realpointitaly.com/" />
+          <key name="Browser" value="Chrome" />
+        </section>
+      </section>
+    </section>
+
+    <section name="Test">
+      <section name="DisplayTargets">
+        <section name="RealpointWeb">
+          <key name="BaseUrl" value="https://www.test.realpointitaly.com/" />
+          <key name="Browser" value="Chrome" />
+        </section>
+      </section>
+    </section>
+  </section>
+  
+</configuration>

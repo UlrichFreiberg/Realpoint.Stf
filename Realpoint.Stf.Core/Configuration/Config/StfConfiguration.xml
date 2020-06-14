@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<configuration xmlns="http://www.testautomation.com/yacf" version="2013.04.21.0">
+  <section name="StfKernel">
+    <!--<key name="PluginPath" value="%STF_ROOT%\Plugins\" />-->
+    <key name="PluginPath" value="C:\Projects\Realpoint.Stf\StfBin" />
+    <key name="PluginPatterns" value="Mir.Stf.*.dll;Realpoint.Stf.*.dll" />
+    <key name="ArchiveTestResults" value="true" />
+    <key name="ArchiveDestination" value="%STF_ROOT%\archiveDir" />
+    <section name="StfLogger">
+      <key name="PathToLogoImageFile" value="C:\temp\Stf\Images\Realpoint.png" />
+      <key name="HeaderForegroundColor" value="white" />
+      <key name="HeaderBackgroundColor" value="rgba(13, 93, 140, 1)" />
+    </section>
+  </section>
+
+  <!-- 
+  This section could go into c:\temp\Stf\Configuration\StfConfiguration_Machine.xml
+  
+  If you dont want passwords etc to be public...
+  -->
+  <section name="Environments" defaultsection="Prod">
+
+    <section name="UAT">
+      <section name="DisplayTargets">
+        <section name="RealpointWeb">
+          <key name="BaseUrl" value="https://UAT.Realpoint.com/" />
+          <key name="Browser" value="Chrome" />
+        </section>
+      </section>
+    </section>
+
+    <section name="Preprod">
+      <section name="DisplayTargets">
+        <section name="RealpointWeb">
+          <key name="BaseUrl" value="https://PreProd.Realpoint.com/" />
+          <key name="Browser" value="Chrome" />
+        </section>
+      </section>
+    </section>
+
+    <section name="Prod">
+      <section name="DisplayTargets">
+        <section name="RealpointWeb">
+          <key name="BaseUrl" value="https://www.RealpointItaly.com/" />
+          <key name="Browser" value="Chrome" />
+        </section>
+      </section>
+    </section>
+  </section>
+
+</configuration>
