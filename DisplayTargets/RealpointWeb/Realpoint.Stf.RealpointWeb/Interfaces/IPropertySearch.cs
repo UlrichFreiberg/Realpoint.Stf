@@ -4,7 +4,7 @@
 //          http://www.perlfoundation.org/artistic_license_2_0
 // </copyright>
 // <summary>
-//   Defines the IPropertySearch type.
+//   The PropertySearch interface.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,6 +15,16 @@ namespace Realpoint.Stf.RealpointWeb.Interfaces
     /// </summary>
     public interface IPropertySearch
     {
+        /// <summary>
+        /// Gets or sets a value indicating whether advanced.
+        /// </summary>
+        bool Advanced { get; set; }
+
+        /// <summary>
+        /// Gets or sets the keywords.
+        /// </summary>
+        string Keywords { get; set; }
+
         /// <summary>
         /// The search.
         /// </summary>

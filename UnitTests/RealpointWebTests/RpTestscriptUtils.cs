@@ -4,11 +4,11 @@
 //          http://www.perlfoundation.org/artistic_license_2_0
 // </copyright>
 // <summary>
-//   Defines the RpTestscriptUtils type.
+//    Defines the RpTestscriptUtils type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace RealpointWebTests
+namespace Realpoint.Stf.WebTests
 {
     using System;
 

@@ -1,10 +1,9 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="TestCase001.cs" company="Mir Software">
+﻿// <copyright file="TestScript001.cs" company="Mir Software">
 //   Copyright governed by Artistic license as described here:
 //          http://www.perlfoundation.org/artistic_license_2_0
 // </copyright>
 // <summary>
-//   Defines the MainPageTests type.
+//   Defines the TestScript001 type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -19,10 +18,10 @@ namespace Realpoint.Stf.WebTests
     using Mir.Stf.Utilities;
 
     /// <summary>
-    /// The main page tests.
+    /// The TestScript001
     /// </summary>
     [TestClass]
-    public class TestCase001 : RealpointTestScriptBase
+    public class TestScript001 : RealpointTestScriptBase
     {
         /// <summary>
         /// The test initialize.
@@ -42,18 +41,16 @@ namespace Realpoint.Stf.WebTests
             RealpointShell?.CloseDown();
         }
 
-        /// <summary>
-        /// The log in test.
-        /// </summary>
-        /// <remarks>
-        /// After log in it's possible to acess 'MeProfile-page'
-        /// </remarks>
         [TestMethod]
-        public void Tc001()
+        public void Ts001()
         {
             StfAssert.IsNotNull("RealpointShell", RealpointShell);
 
             var propertySearch = RealpointShell.PropertySearch();
+
+            propertySearch.Advanced = true;
+            propertySearch.Keywords = "CE324";
+
             var result = propertySearch.Search();
 
             StfAssert.IsTrue("Search succeeded", result);
