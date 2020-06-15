@@ -39,16 +39,33 @@ namespace Realpoint.Stf.RealpointWeb.Models
         public bool Search()
         {
             var retVal = WebAdapter.ButtonClickByXpath("//button[text()='Search']");
-            var SyncAndWaitForResult = WebAdapter.FindElement(By.XPath("//h1/span[text()=''Property For Sale In Italy]"), 10);
+
+            if (!retVal)
+            {
+                return false;
+            }
+
+            retVal = WebAdapter.WaitForJQueryNotActive(2);
 
             return retVal;
         }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether advanced.
+        /// </summary>
         public bool Advanced
         {
             get
             {
-                var retVal = WebAdapter.CheckBoxGetValueByXpath("//label[text()='Advanced Search']/../Input");
+                var retVal = WebAdapter.CheckBoxGetValueByXpath("//input[@data-fieldid='531']");
+
+                if (!retVal)
+                {
+                    return false;
+                }
+
+                // When Advanced is set - some JQuery starts - need to wait for that
+                retVal = WebAdapter.WaitForJQueryNotActive();
 
                 return retVal;
             }
@@ -59,6 +76,9 @@ namespace Realpoint.Stf.RealpointWeb.Models
             }
         }
 
+        /// <summary>
+        /// Gets or sets the keywords.
+        /// </summary>
         public string Keywords
         {
             get
