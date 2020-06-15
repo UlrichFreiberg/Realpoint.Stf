@@ -13,6 +13,8 @@ namespace Realpoint.Stf.Adapters.WebAdapter
     using System;
     using System.Threading;
 
+    using OpenQA.Selenium;
+
     /// <summary>
     /// The web adapter.
     /// </summary>
@@ -74,6 +76,29 @@ namespace Realpoint.Stf.Adapters.WebAdapter
         public void WaitForComplete(TimeSpan timeSpan)
         {
             WaitForComplete((int)timeSpan.TotalSeconds);
+        }
+
+        /// <summary>
+        /// The wait for j query active.
+        /// </summary>
+        /// <param name="secondsToWaitForPageToRender">
+        /// The seconds To Wait For Page To Render after JQuery is done.
+        /// </param>
+        /// <returns>
+        /// Indication of success
+        /// </returns>
+        public bool WaitForJQueryNotActive(int secondsToWaitForPageToRender = 1)
+        {
+            while ((bool)((IJavaScriptExecutor)WebDriver).ExecuteScript("return (window.jQuery != null) && (jQuery.active !== 0);"))
+            {
+                WaitForComplete(TimeSpan.FromMilliseconds(200));
+
+                // TODO: something timeout and then return false
+            }
+
+            WaitForComplete(TimeSpan.FromSeconds(secondsToWaitForPageToRender));
+
+            return true;
         }
     }
 }

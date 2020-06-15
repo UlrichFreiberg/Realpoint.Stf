@@ -153,6 +153,17 @@ namespace Realpoint.Stf.Adapters.WebAdapter
         void WaitForComplete(TimeSpan timeSpan);
 
         /// <summary>
+        /// The wait for j query active.
+        /// </summary>
+        /// <param name="secondsToWaitForPageToRender">
+        /// The seconds To Wait For Page To Render after JQuery is done.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
+        bool WaitForJQueryNotActive(int secondsToWaitForPageToRender = 1);
+
+            /// <summary>
         /// The move to element.
         /// </summary>
         /// <param name="elem">
