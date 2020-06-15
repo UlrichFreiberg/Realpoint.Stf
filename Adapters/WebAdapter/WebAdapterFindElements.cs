@@ -12,9 +12,6 @@ namespace Realpoint.Stf.Adapters.WebAdapter
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-
-    using Mir.Stf.Utilities;
 
     using OpenQA.Selenium;
     using OpenQA.Selenium.Support.Extensions;
@@ -37,8 +34,6 @@ namespace Realpoint.Stf.Adapters.WebAdapter
         public IWebElement FindElement(By by)
         {
             IWebElement retVal;
-
-            HandleCheckForErrorsOnAllPages();
 
             try
             {
@@ -125,68 +120,6 @@ namespace Realpoint.Stf.Adapters.WebAdapter
         public void MoveToElement(IWebElement elem)
         {
             WebDriver.ExecuteJavaScript("arguments[0].scrollIntoView(true);", elem);
-        }
-
-        /// <summary>
-        /// The handle check for errors on all pages.
-        /// </summary>
-        /// <exception cref="Exception">
-        /// If a string is found the WebDriver is set to null, and an Exception is thrown
-        /// </exception>
-        private void HandleCheckForErrorsOnAllPages()
-        {
-            if (!Configuration.CheckForErrorsOnAllPages)
-            {
-                return;
-            }
-
-            StfLogger.LogHeader($"WebAdapter configured for checking errors on all pages matching [{Configuration.CheckForErrorsOnAllPagesText}]");
-
-            var sourceText = WebDriver.PageSource;
-            var substringsInSource = CheckForSubstringsInSource(sourceText, Configuration.CheckForErrorsOnAllPagesText);
-
-            if (!string.IsNullOrEmpty(substringsInSource))
-            {
-                var errorMsg = $"Found something matching [{Configuration.CheckForErrorsOnAllPagesText}] on page";
-
-                StfLogger.LogError($"Found [{substringsInSource}] on page");
-                StfLogger.LogHeader("****************************");
-                StfLogger.LogHeader("*** FOUND ERRORS ON PAGE ***");
-                StfLogger.LogHeader("****************************");
-                StfLogger.LogScreenshot(StfLogLevel.Error, errorMsg);
-
-                // Ensure/enforce errors from now on! - of the exception was caught somewhere
-                WebDriver = null;
-
-                throw new Exception(errorMsg);
-            }
-
-            StfLogger.LogDebug($"Looked for errors [{Configuration.CheckForErrorsOnAllPagesText}] on page - found none");
-        }
-
-        /// <summary>
-        /// The check for substrings in source.
-        /// </summary>
-        /// <param name="sourceText">
-        /// The source text.
-        /// </param>
-        /// <param name="substrings">
-        /// The substrings.
-        /// </param>
-        /// <returns>
-        /// The <see cref="string"/>.
-        /// </returns>
-        private string CheckForSubstringsInSource(string sourceText, string substrings)
-        {
-            if (string.IsNullOrEmpty(sourceText) || string.IsNullOrEmpty(substrings))
-            {
-                return null;
-            }
-
-            var strings = substrings.Split('#').Select(p => p.Trim());
-            var retVal = strings.FirstOrDefault(sourceText.Contains);
-
-            return retVal;
         }
     }
 }
