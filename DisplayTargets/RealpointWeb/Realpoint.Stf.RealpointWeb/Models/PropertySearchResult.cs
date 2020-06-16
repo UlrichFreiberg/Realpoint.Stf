@@ -68,6 +68,7 @@ namespace Realpoint.Stf.RealpointWeb.Models
             var moreButton = result.FindElement(By.XPath(".//a[normalize-space() = 'More...']"));
 
             moreButton.Click();
+            WebAdapter.WaitForJQueryNotActive();
 
             var retVal = Get<IPropertySheet>();
 
