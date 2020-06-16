@@ -1,10 +1,10 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="IPropertySearch.cs" company="Mir Software">
+// <copyright file="IPropertySearchResult.cs" company="Mir Software">
 //   Copyright governed by Artistic license as described here:
 //          http://www.perlfoundation.org/artistic_license_2_0
 // </copyright>
 // <summary>
-//   The PropertySearch interface.
+//   Defines the IPropertySearchResult type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -13,26 +13,24 @@ namespace Realpoint.Stf.RealpointWeb.Interfaces
     using Realpoint.Stf.RealpointWeb.Models;
 
     /// <summary>
-    /// The PropertySearch interface.
+    /// The PropertySearchResult interface.
     /// </summary>
-    public interface IPropertySearch
+    public interface IPropertySearchResult
     {
         /// <summary>
-        /// Gets or sets a value indicating whether advanced.
+        /// Gets a value indicating whether single search result.
         /// </summary>
-        bool Advanced { get; set; }
+        bool SingleSearchResult { get; }
 
         /// <summary>
-        /// Gets or sets the keywords.
+        /// The open search result.
         /// </summary>
-        string Keywords { get; set; }
-
-        /// <summary>
-        /// The search.
-        /// </summary>
+        /// <param name="i">
+        /// The i.
+        /// </param>
         /// <returns>
-        /// The <see cref="IPropertySearchResult"/>.
+        /// The <see cref="IPropertySheet"/>.
         /// </returns>
-        IPropertySearchResult Search();
+        IPropertySheet OpenSearchResult(int i);
     }
 }

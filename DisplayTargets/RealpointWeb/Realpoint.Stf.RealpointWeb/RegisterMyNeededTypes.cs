@@ -12,6 +12,8 @@ namespace Realpoint.Stf.RealpointWeb
 {
     using Mir.Stf.Utilities;
 
+    using Realpoint.Stf.RealpointWeb.Interfaces;
+
     /// <summary>
     /// The demo corp web shell.
     /// </summary>
@@ -28,7 +30,7 @@ namespace Realpoint.Stf.RealpointWeb
         /// <param name="realpointWebShell">
         /// The wt shell.
         /// </param>
-        public RegisterMyNeededTypes(Interfaces.IRealpointWebShell realpointWebShell)
+        public RegisterMyNeededTypes(IRealpointWebShell realpointWebShell)
         {
             stfContainer = realpointWebShell.StfContainer;
         }
@@ -38,7 +40,9 @@ namespace Realpoint.Stf.RealpointWeb
         /// </summary>
         public void Register()
         {
-            stfContainer.RegisterType<Interfaces.IPropertySearch, Models.PropertySearch>();
+            stfContainer.RegisterType<IPropertySearch, Models.PropertySearch>();
+            stfContainer.RegisterType<IPropertySearchResult, Models.PropertySearchResult>();
+            stfContainer.RegisterType<IPropertySheet, Models.PropertySheet>();
         }
     }
 }

@@ -107,8 +107,12 @@
     <Compile Include="Interfaces\IPropertySearch.cs" />
     <Compile Include="Interfaces\IRealpointWebShell.cs" />
     <Compile Include="Models\Home.cs" />
+    <Compile Include="Interfaces\IPropertySearchResult.cs" />
+    <Compile Include="Interfaces\IPropertySheet.cs" />
     <Compile Include="Models\PropertySearch.cs" />
     <Compile Include="MenuManager.cs" />
+    <Compile Include="Models\PropertySearchResult.cs" />
+    <Compile Include="Models\PropertySheet.cs" />
     <Compile Include="RegisterMyNeededTypes.cs" />
     <Compile Include="RealpointWebShellModelBase.cs" />
     <Compile Include="RealpointWebShell.cs" />

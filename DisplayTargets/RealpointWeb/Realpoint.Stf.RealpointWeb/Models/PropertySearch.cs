@@ -34,18 +34,25 @@ namespace Realpoint.Stf.RealpointWeb.Models
         /// The search.
         /// </summary>
         /// <returns>
-        /// The <see cref="bool"/>.
+        /// The <see cref="IPropertySearchResult"/>.
         /// </returns>
-        public bool Search()
+        public IPropertySearchResult Search()
         {
-            var retVal = WebAdapter.ButtonClickByXpath("//button[text()='Search']");
+            var success = WebAdapter.ButtonClickByXpath("//button[text()='Search']");
 
-            if (!retVal)
+            if (!success)
             {
-                return false;
+                return null;
             }
 
-            retVal = WebAdapter.WaitForJQueryNotActive(2);
+            success = WebAdapter.WaitForJQueryNotActive(2);
+
+            if (!success)
+            {
+                return null;
+            }
+
+            var retVal = Get<IPropertySearchResult>();
 
             return retVal;
         }
