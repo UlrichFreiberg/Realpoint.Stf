@@ -33,6 +33,11 @@ namespace Realpoint.Stf.Adapters.WebAdapter
         WebAdapterConfiguration Configuration { get; set; }
 
         /// <summary>
+        /// Gets the current url.
+        /// </summary>
+        string CurrentUrl { get; }
+
+        /// <summary>
         /// The open url.
         /// </summary>
         /// <param name="url">

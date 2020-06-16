@@ -28,9 +28,9 @@ namespace Realpoint.Stf.Adapters.WebAdapter
     public partial class WebAdapter : StfAdapterBase, IWebAdapter
     {
         /// <summary>
-        /// Gets the name.
+        /// Gets the name for this WebAdapter.
         /// </summary>
-        public string Name => this.ToString();
+        public string Name => ToString();
 
         /// <summary>
         /// Gets the version info.
@@ -71,6 +71,20 @@ namespace Realpoint.Stf.Adapters.WebAdapter
 
             return retVal;
         }
+
+        /// <summary>
+        /// Gets the current url.
+        /// </summary>
+        public string CurrentUrl
+        {
+            get
+            {
+                var retVal = WebDriver.Url;
+
+                return retVal;
+            }
+        }
+
 
         /// <summary>
         /// The get text by by. Returns the text - if element not found string.empty is returned
