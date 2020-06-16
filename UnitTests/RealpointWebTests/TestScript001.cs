@@ -12,7 +12,6 @@ using RealpointWebTests;
 
 namespace Realpoint.Stf.WebTests
 {
-
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using Mir.Stf.Utilities;
@@ -30,6 +29,7 @@ namespace Realpoint.Stf.WebTests
         public void TestInitialize()
         {
             RealpointShell = Get<IRealpointWebShell>();
+            StfAssert.IsNotNull("RealpointShell", RealpointShell);
         }
 
         /// <summary>
@@ -44,17 +44,22 @@ namespace Realpoint.Stf.WebTests
         [TestMethod]
         public void Ts001()
         {
-            StfAssert.IsNotNull("RealpointShell", RealpointShell);
-
             var propertySearch = RealpointShell.PropertySearch();
 
             propertySearch.Advanced = true;
             propertySearch.Keywords = "CE324";
 
-            var result = propertySearch.Search();
+            var propertySearchResult = propertySearch.Search();
 
-            StfAssert.IsTrue("Search succeeded", result);
             StfLogger.LogScreenshot(StfLogLevel.Info, "After Search");
+            StfAssert.IsTrue("Only one search result", propertySearchResult.SingleSearchResult);
+
+            var propertySheet = propertySearchResult.OpenSearchResult(1);
+            const string ExpectedUrl = "italian-property/2-bed-apartment-case-stantini-emilia-romagna-ce324";
+            var actualUrl = propertySheet.Url;
+
+            StfLogger.LogScreenshot(StfLogLevel.Info, "Property Sheet");
+            StfAssert.StringEqualsCi("Url", ExpectedUrl, actualUrl);
         }
     }
 }

@@ -40,9 +40,9 @@ namespace Realpoint.Stf.WebTests.ZDeveloperTests
         public void TestSearch()
         {
             var propertySearch = RealpointShell.PropertySearch();
-            var result = propertySearch.Search();
+            var propertySearchResult = propertySearch.Search();
 
-            StfAssert.IsTrue("Search succeeded", result);
+            StfAssert.IsTrue("Found more than one property", !propertySearchResult.SingleSearchResult);
             StfLogger.LogScreenshot(StfLogLevel.Info, "After Search");
         }
     }
