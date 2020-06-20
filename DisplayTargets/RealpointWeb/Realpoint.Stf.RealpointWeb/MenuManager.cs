@@ -166,7 +166,11 @@ namespace Realpoint.Stf.RealpointWeb
             }
 
             // TODO some checks for we really are one this page
-            return true;
+            // Check the H1 title
+            var titleElem = WebAdapter.FindElement(By.XPath("//div[@class='TitleTitle']/h1/span[normalize-space()='Property for sale in Sicily, Italy']"));
+
+            retVal = titleElem != null;
+            return retVal;
         }
 
         private bool GoAndCheckRentals()

@@ -123,7 +123,10 @@ namespace Realpoint.Stf.RealpointWeb
         /// </returns>
         public IHome Home()
         {
-            MenuManager.GoMenu(TopMenu.Home);
+            if (!MenuManager.GoMenu(TopMenu.Home))
+            {
+                return null;               
+            }
 
             var retVal = StfContainer.Get<IHome>();
 
