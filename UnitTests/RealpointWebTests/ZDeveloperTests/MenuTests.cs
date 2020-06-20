@@ -42,7 +42,7 @@ namespace Realpoint.Stf.WebTests.ZDeveloperTests
         public void TestInitialize()
         {
             realpointShell = Get<IRealpointWebShell>();
-            menuMananger = new MenuManager(realpointShell.WebAdapter);
+            menuMananger = new MenuManager(realpointShell);
         }
 
         /// <summary>
