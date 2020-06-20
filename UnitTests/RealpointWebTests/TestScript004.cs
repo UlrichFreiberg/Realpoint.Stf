@@ -13,7 +13,14 @@ namespace Realpoint.Stf.WebTests
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using Realpoint.Stf.RealpointWeb.Interfaces;
+    using Realpoint.Stf.RealpointWeb.Interfaces.Blog;
+    using Realpoint.Stf.RealpointWeb.Interfaces.Contact;
+    using Realpoint.Stf.RealpointWeb.Interfaces.DiscoverItaly;
+    using Realpoint.Stf.RealpointWeb.Interfaces.FractionalOwnership;
     using Realpoint.Stf.RealpointWeb.Interfaces.Home;
+    using Realpoint.Stf.RealpointWeb.Interfaces.OurService;
+    using Realpoint.Stf.RealpointWeb.Interfaces.PropertySearch;
+    using Realpoint.Stf.RealpointWeb.Interfaces.Rentals;
     using RealpointWebTests;
 
     /// <summary>
@@ -45,12 +52,32 @@ namespace Realpoint.Stf.WebTests
             StfAssert.IsInstanceOfType("Home", home, typeof(IHome));
 
             var fractionalOwnership = RealpointShell.FractionalOwnership();
+
+            StfAssert.IsInstanceOfType("FractionalOwnership", fractionalOwnership, typeof(IFractionalOwnership));
+
             var ourService = RealpointShell.OurService();
+
+            StfAssert.IsInstanceOfType("OurService", ourService, typeof(IOurService));
+
             var propertySearch = RealpointShell.PropertySearch();
+
+            StfAssert.IsInstanceOfType("PropertySearch", propertySearch, typeof(IPropertySearch));
+
             var discoverItaly = RealpointShell.DiscoverItaly();
+
+            StfAssert.IsInstanceOfType("DiscoverItaly", discoverItaly, typeof(IDiscoverItaly));
+
             var rentals = RealpointShell.Rentals();
+
+            StfAssert.IsInstanceOfType("Rentals", rentals, typeof(IRentals));
+
             var blog = RealpointShell.Blog();
+
+            StfAssert.IsInstanceOfType("Blog", blog, typeof(IBlog));
+
             var contact = RealpointShell.Contact();
+
+            StfAssert.IsInstanceOfType("Contact", contact, typeof(IContact));
         }
 
         /// <summary>
