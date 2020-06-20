@@ -13,7 +13,8 @@ namespace Realpoint.Stf.WebTests
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using Realpoint.Stf.RealpointWeb.Interfaces;
-    using Realpoint.Stf.RealpointWeb.Interfaces.Home;
+    using Realpoint.Stf.RealpointWeb.Interfaces.Contact;
+
     using RealpointWebTests;
 
     /// <summary>
@@ -41,6 +42,15 @@ namespace Realpoint.Stf.WebTests
 
             contact.Name = "Fred"; 
             contact.Send();
+
+            var validationErrors = contact.ValidationErrorsPresent();
+
+            StfAssert.IsTrue("Validation Errors are present", validationErrors);
+
+            var missingFields = contact.MissingFields;
+
+            StfAssert.IsTrue("Validation Errors are present for Email", missingFields.HasFlag(MissingRequiredFields.Email));
+            StfAssert.IsTrue("Validation Errors are present for Message", missingFields.HasFlag(MissingRequiredFields.Message));
         }
     }
 }
