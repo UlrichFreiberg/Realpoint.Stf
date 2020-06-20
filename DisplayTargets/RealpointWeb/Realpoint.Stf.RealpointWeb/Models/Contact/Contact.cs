@@ -10,6 +10,7 @@
 
 namespace Realpoint.Stf.RealpointWeb.Models.Contact
 {
+    using OpenQA.Selenium;
     using Realpoint.Stf.RealpointWeb.Interfaces;
     using Realpoint.Stf.RealpointWeb.Interfaces.Contact;
 
@@ -27,6 +28,27 @@ namespace Realpoint.Stf.RealpointWeb.Models.Contact
         public Contact(IRealpointWebShell realpointWebShell)
             : base(realpointWebShell)
         {
+        }
+
+        public string Name
+        {
+            get
+            {
+                var retVal = WebAdapter.GetText(By.Id("dnn2964Name"));
+
+                return retVal;
+            }
+            set
+            {
+                WebAdapter.TextboxSetTextById("dnn2964Name", value);
+            }
+        }
+
+        public bool Send()
+        {
+            var retVal = WebAdapter.ButtonClickById("dnn2964Send");
+
+            return retVal;
         }
     }
 }

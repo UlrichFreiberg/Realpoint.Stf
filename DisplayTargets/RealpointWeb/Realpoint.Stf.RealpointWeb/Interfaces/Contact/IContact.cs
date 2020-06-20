@@ -15,5 +15,8 @@ namespace Realpoint.Stf.RealpointWeb.Interfaces.Contact
     /// </summary>
     public interface IContact
     {
+        string Name { get; set; }
+
+        bool Send();
     }
 } 
