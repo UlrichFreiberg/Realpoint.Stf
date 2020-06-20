@@ -8,11 +8,12 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Realpoint.Stf.RealpointWeb.Models
+namespace Realpoint.Stf.RealpointWeb.Models.PropertySearch
 {
     using OpenQA.Selenium;
 
     using Realpoint.Stf.RealpointWeb.Interfaces;
+    using Realpoint.Stf.RealpointWeb.Interfaces.PropertySearch;
 
     /// <summary>
     /// The property search.

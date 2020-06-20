@@ -17,12 +17,25 @@ namespace Realpoint.Stf.RealpointWeb
     using Realpoint.Stf.Core;
     using Realpoint.Stf.RealpointWeb.Configuration;
     using Realpoint.Stf.RealpointWeb.Interfaces;
+    using Realpoint.Stf.RealpointWeb.Interfaces.Blog;
+    using Realpoint.Stf.RealpointWeb.Interfaces.Contact;
+    using Realpoint.Stf.RealpointWeb.Interfaces.DiscoverItaly;
+    using Realpoint.Stf.RealpointWeb.Interfaces.FractionalOwnership;
+    using Realpoint.Stf.RealpointWeb.Interfaces.Home;
+    using Realpoint.Stf.RealpointWeb.Interfaces.OurService;
+    using Realpoint.Stf.RealpointWeb.Interfaces.PropertySearch;
+    using Realpoint.Stf.RealpointWeb.Interfaces.Rentals;
 
     /// <summary>
     /// The demo corp web shell.
     /// </summary>
     public class RealpointWebShell : TargetBase, IRealpointWebShell
     {
+        /// <summary>
+        /// Backing field for the menu manager.
+        /// </summary>
+        private MenuManager menuManager;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="RealpointWebShell"/> class. 
         /// </summary>
@@ -41,6 +54,19 @@ namespace Realpoint.Stf.RealpointWeb
         /// Gets or sets the web adapter.
         /// </summary>
         public IWebAdapter WebAdapter { get; set; }
+
+        /// <summary>
+        /// Gets the menu manager.
+        /// </summary>
+        public MenuManager MenuManager
+        {
+            get
+            {
+                var retval = menuManager ?? (menuManager = new MenuManager(this));
+
+                return retval;
+            }
+        }
 
         /// <summary>
         /// The text-feedback to user 
@@ -82,11 +108,114 @@ namespace Realpoint.Stf.RealpointWeb
         /// </returns>
         public IPropertySearch PropertySearch()
         {
-            var bob = new MenuManager(WebAdapter);
-
-            bob.GoMenu(TopMenu.PropertySearch);
+            MenuManager.GoMenu(TopMenu.PropertySearch);
 
             var retVal = StfContainer.Get<IPropertySearch>();
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// The home.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="IHome"/>.
+        /// </returns>
+        public IHome Home()
+        {
+            MenuManager.GoMenu(TopMenu.Home);
+
+            var retVal = StfContainer.Get<IHome>();
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// The fractional ownership.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="IFractionalOwnership"/>.
+        /// </returns>
+        public IFractionalOwnership FractionalOwnership()
+        {
+            MenuManager.GoMenu(TopMenu.FractionalOwnership);
+
+            var retVal = StfContainer.Get<IFractionalOwnership>();
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// The our service.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="IOurService"/>.
+        /// </returns>
+        public IOurService OurService()
+        {
+            MenuManager.GoMenu(TopMenu.OurService);
+
+            var retVal = StfContainer.Get<IOurService>();
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// The discover italy.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="IDiscoverItaly"/>.
+        /// </returns>
+        public IDiscoverItaly DiscoverItaly()
+        {
+            MenuManager.GoMenu(TopMenu.DiscoverItaly);
+
+            var retVal = StfContainer.Get<IDiscoverItaly>();
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// The rentals.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="IRentals"/>.
+        /// </returns>
+        public IRentals Rentals()
+        {
+            MenuManager.GoMenu(TopMenu.Rentals);
+
+            var retVal = StfContainer.Get<IRentals>();
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// The blog.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="IBlog"/>.
+        /// </returns>
+        public IBlog Blog()
+        {
+            MenuManager.GoMenu(TopMenu.Blog);
+
+            var retVal = StfContainer.Get<IBlog>();
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// The contact.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="IContact"/>.
+        /// </returns>
+        public IContact Contact()
+        {
+            MenuManager.GoMenu(TopMenu.Contact);
+
+            var retVal = StfContainer.Get<IContact>();
 
             return retVal;
         }
@@ -118,7 +247,7 @@ namespace Realpoint.Stf.RealpointWeb
         /// <summary>
         /// The choose english.
         /// </summary>
-        private void ChooseEnglish()
+        public void ChooseEnglish()
         {
             const string Xpath = @"//sprog_valg//img[@src=""http://wt.troldvaerk.org/grafik/flag/2.svg""]";
 

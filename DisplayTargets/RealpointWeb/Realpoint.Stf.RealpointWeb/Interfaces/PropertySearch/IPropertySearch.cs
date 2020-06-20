@@ -8,10 +8,8 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Realpoint.Stf.RealpointWeb.Interfaces
+namespace Realpoint.Stf.RealpointWeb.Interfaces.PropertySearch
 {
-    using Realpoint.Stf.RealpointWeb.Models;
-
     /// <summary>
     /// The PropertySearch interface.
     /// </summary>

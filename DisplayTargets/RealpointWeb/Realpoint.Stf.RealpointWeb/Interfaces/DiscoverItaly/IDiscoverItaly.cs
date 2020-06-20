@@ -1,23 +1,19 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="IPropertySheet.cs" company="Mir Software">
+// <copyright file="IDiscoverItaly.cs" company="Mir Software">
 //   Copyright governed by Artistic license as described here:
 //          http://www.perlfoundation.org/artistic_license_2_0
 // </copyright>
 // <summary>
-//   Defines the IPropertySheet type.
+//   Defines the IDiscoverItaly type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Realpoint.Stf.RealpointWeb.Interfaces
+namespace Realpoint.Stf.RealpointWeb.Interfaces.DiscoverItaly
 {
     /// <summary>
-    /// The PropertySheet interface.
+    /// The DiscoverItaly interface.
     /// </summary>
-    public interface IPropertySheet
+    public interface IDiscoverItaly
     {
-        /// <summary>
-        /// Gets the current displayed url.
-        /// </summary>
-        string Url { get; }
     }
 }

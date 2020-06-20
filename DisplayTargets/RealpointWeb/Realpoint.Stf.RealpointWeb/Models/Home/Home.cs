@@ -8,14 +8,15 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Realpoint.Stf.RealpointWeb.Models
+namespace Realpoint.Stf.RealpointWeb.Models.Home
 {
     using Realpoint.Stf.RealpointWeb.Interfaces;
+    using Realpoint.Stf.RealpointWeb.Interfaces.Home;
 
     /// <summary>
     /// The home.
     /// </summary>
-    public class Home : RealpointWebShellModelBase
+    public class Home : RealpointWebShellModelBase, IHome
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Home"/> class.

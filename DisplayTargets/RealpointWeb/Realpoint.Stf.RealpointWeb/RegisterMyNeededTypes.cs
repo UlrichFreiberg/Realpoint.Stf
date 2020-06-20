@@ -13,6 +13,20 @@ namespace Realpoint.Stf.RealpointWeb
     using Mir.Stf.Utilities;
 
     using Realpoint.Stf.RealpointWeb.Interfaces;
+    using Realpoint.Stf.RealpointWeb.Interfaces.Blog;
+    using Realpoint.Stf.RealpointWeb.Interfaces.Contact;
+    using Realpoint.Stf.RealpointWeb.Interfaces.DiscoverItaly;
+    using Realpoint.Stf.RealpointWeb.Interfaces.FractionalOwnership;
+    using Realpoint.Stf.RealpointWeb.Interfaces.Home;
+    using Realpoint.Stf.RealpointWeb.Interfaces.OurService;
+    using Realpoint.Stf.RealpointWeb.Interfaces.Rentals;
+    using Realpoint.Stf.RealpointWeb.Models.Blog;
+    using Realpoint.Stf.RealpointWeb.Models.Contact;
+    using Realpoint.Stf.RealpointWeb.Models.DiscoverItaly;
+    using Realpoint.Stf.RealpointWeb.Models.FractionalOwnership;
+    using Realpoint.Stf.RealpointWeb.Models.Home;
+    using Realpoint.Stf.RealpointWeb.Models.OurService;
+    using Realpoint.Stf.RealpointWeb.Models.Rentals;
 
     /// <summary>
     /// The demo corp web shell.
@@ -40,9 +54,24 @@ namespace Realpoint.Stf.RealpointWeb
         /// </summary>
         public void Register()
         {
-            stfContainer.RegisterType<IPropertySearch, Models.PropertySearch>();
-            stfContainer.RegisterType<IPropertySearchResult, Models.PropertySearchResult>();
-            stfContainer.RegisterType<IPropertySheet, Models.PropertySheet>();
+            RegisterPropertySearchClasses();
+            stfContainer.RegisterType<IBlog, Blog>();
+            stfContainer.RegisterType<IContact, Contact>();
+            stfContainer.RegisterType<IDiscoverItaly, DiscoverItaly>();
+            stfContainer.RegisterType<IFractionalOwnership, FractionalOwnership>();
+            stfContainer.RegisterType<IHome, Home>();
+            stfContainer.RegisterType<IOurService, OurService>();
+            stfContainer.RegisterType<IRentals, Rentals>();
+        }
+
+        /// <summary>
+        /// The register property search classes.
+        /// </summary>
+        private void RegisterPropertySearchClasses()
+        {
+            stfContainer.RegisterType<Interfaces.PropertySearch.IPropertySearch, Models.PropertySearch.PropertySearch>();
+            stfContainer.RegisterType<Interfaces.PropertySearch.IPropertySearchResult, Models.PropertySearch.PropertySearchResult>();
+            stfContainer.RegisterType<Interfaces.PropertySearch.IPropertySheet, Models.PropertySearch.PropertySheet>();
         }
     }
 }
