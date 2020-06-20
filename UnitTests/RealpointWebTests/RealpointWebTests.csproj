@@ -124,6 +124,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="TestScript002.cs" />
     <Compile Include="TestScript004.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestScript001.cs" />
