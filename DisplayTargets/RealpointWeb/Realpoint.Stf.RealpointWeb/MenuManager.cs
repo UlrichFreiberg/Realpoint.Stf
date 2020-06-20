@@ -165,7 +165,7 @@ namespace Realpoint.Stf.RealpointWeb
                 return false;
             }
 
-            // TODO some checks for we really are one this page
+            // TODO some checks that we really are one this page
             // Check the H1 title
             var titleElem = WebAdapter.FindElement(By.XPath("//div[@class='TitleTitle']/h1/span[normalize-space()='Property for sale in Sicily, Italy']"));
 
@@ -182,8 +182,12 @@ namespace Realpoint.Stf.RealpointWeb
                 return false;
             }
 
-            // TODO some checks for we really are one this page
-            return true;
+            // TODO some checks that we really are one this page
+            // Check the H1 title
+            var titleElem = WebAdapter.FindElement(By.XPath("//div[@class='TitleTitle']/h1/span[normalize-space()='Italian Rental Property']"));
+
+            retVal = titleElem != null;
+            return retVal;
         }
 
         private bool GoAndCheckOurService()
@@ -195,8 +199,13 @@ namespace Realpoint.Stf.RealpointWeb
                 return false;
             }
 
-            // TODO some checks for we really are one this page
-            return true;
+            // TODO some checks that we really are one this page
+            // Check the H1 title
+            var titleElem = WebAdapter.FindElement(By.XPath("//div[@class='TitleTitle']/h1/span[normalize-space()='How To Buy Your Italian Property']"));
+
+            retVal = titleElem != null;
+            return retVal;
+            
         }
 
         private bool GoAndCheckFractionalOwnership()
@@ -208,8 +217,13 @@ namespace Realpoint.Stf.RealpointWeb
                 return false;
             }
 
-            // TODO some checks for we really are one this page
-            return true;
+            // TODO some checks that we really are one this page
+            // Check the H1 title
+            var titleElem = WebAdapter.FindElement(By.XPath("//div[@class='TitleTitle']/h1/span[normalize-space()='Fractional Ownership Property In Italy']"));
+
+            retVal = titleElem != null;
+            return retVal;
+            
         }
 
         private bool GoAndCheckDiscoverItaly()
@@ -221,8 +235,12 @@ namespace Realpoint.Stf.RealpointWeb
                 return false;
             }
 
-            // TODO some checks for we really are one this page
-            return true;
+            // TODO some checks that we really are one this page
+            // Check the H2 title
+            var titleElem = WebAdapter.FindElement(By.XPath("//div[@class='TitleTitle']/h2/span[normalize-space()='Discover the regions of Italy']"));
+
+            retVal = titleElem != null;
+            return retVal;
         }
 
         private bool GoAndCheckContact()
@@ -234,8 +252,12 @@ namespace Realpoint.Stf.RealpointWeb
                 return false;
             }
 
-            // TODO some checks for we really are one this page
-            return true;
+            // TODO some checks that we really are one this page
+            // Check the H2 title
+            var titleElem = WebAdapter.FindElement(By.XPath("//div[@class='TitleTitle']/h2/span[normalize-space()='Contact Us']"));
+
+            retVal = titleElem != null;
+            return retVal;
         }
 
         private bool GoAndCheckBlog()
@@ -247,8 +269,12 @@ namespace Realpoint.Stf.RealpointWeb
                 return false;
             }
 
-            // TODO some checks for we really are one this page
-            return true;
+            // TODO some checks that we really are one this page
+            // Check the H2 title
+            var titleElem = WebAdapter.FindElement(By.XPath("//div[@class='TitleTitle']/h2/span[normalize-space()='Realpoint Italian Property and Lifestyle Blog']"));
+
+            retVal = titleElem != null;
+            return retVal;
         }
 
         private bool GoAndCheckHome()
@@ -260,8 +286,12 @@ namespace Realpoint.Stf.RealpointWeb
                 return false;
             }
 
-            // TODO some checks for we really are one this page
-            return true;
+            // TODO some checks that we really are one this page
+            // Check the H1 title
+            var titleElem = WebAdapter.FindElement(By.XPath("//div[@class='TitleTitle']/h1/span[normalize-space()='Property for Sale in Italy']"));
+
+            retVal = titleElem != null;
+            return retVal;
         }
 
         /// <summary>
