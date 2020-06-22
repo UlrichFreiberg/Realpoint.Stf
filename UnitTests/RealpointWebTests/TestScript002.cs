@@ -51,6 +51,7 @@ namespace Realpoint.Stf.WebTests
 
             StfAssert.IsTrue("Validation Errors are present for Email", missingFields.HasFlag(MissingRequiredFields.Email));
             StfAssert.IsTrue("Validation Errors are present for Message", missingFields.HasFlag(MissingRequiredFields.Message));
+            StfAssert.IsTrue("Validation Errors are present for Terms of use and Privacy policy", missingFields.HasFlag(MissingRequiredFields.TermsAndPrivacy));
         }
     }
 }
