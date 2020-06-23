@@ -8,12 +8,23 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+
 namespace Realpoint.Stf.RealpointWeb.Interfaces.FractionalOwnership
 {
+    using Realpoint.Stf.RealpointWeb.Interfaces.FractionalOwnership.FractionalOwnershipContact;
+
     /// <summary>
     /// The FractionalOwnership interface.
     /// </summary>
     public interface IFractionalOwnership
     {
+
+        /// <summary>
+        /// The fractional ownership Contact.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="IFractionalOwnershipContact"/>.
+        /// </returns>
+        IFractionalOwnershipContact FractionalOwnershipContact();
     }
 }

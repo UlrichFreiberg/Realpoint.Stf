@@ -107,6 +107,7 @@
     <Compile Include="Interfaces\Blog\IBlog.cs" />
     <Compile Include="Interfaces\Contact\IContact.cs" />
     <Compile Include="Interfaces\DiscoverItaly\IDiscoverItaly.cs" />
+    <Compile Include="Interfaces\FractionalOwnership\FractionalOwnershipContact\IFractionalOwnershipContact.cs" />
     <Compile Include="Interfaces\FractionalOwnership\IFractionalOwnership.cs" />
     <Compile Include="Interfaces\Home\IHome.cs" />
     <Compile Include="Interfaces\OurService\IOurService.cs" />
@@ -116,6 +117,7 @@
     <Compile Include="Models\Blog\Blog.cs" />
     <Compile Include="Models\Contact\Contact.cs" />
     <Compile Include="Models\DiscoverItaly\DiscoverItaly.cs" />
+    <Compile Include="Models\FractionalOwnership\FractionalOwnershipContact\FractionalOwnershipContact.cs" />
     <Compile Include="Models\FractionalOwnership\FractionalOwnership.cs" />
     <Compile Include="Interfaces\PropertySearch\IPropertySearchResult.cs" />
     <Compile Include="Interfaces\PropertySearch\IPropertySheet.cs" />

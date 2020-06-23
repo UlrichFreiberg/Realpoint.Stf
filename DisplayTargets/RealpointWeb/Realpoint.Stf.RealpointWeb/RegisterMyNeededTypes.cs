@@ -28,6 +28,9 @@ namespace Realpoint.Stf.RealpointWeb
     using Realpoint.Stf.RealpointWeb.Models.OurService;
     using Realpoint.Stf.RealpointWeb.Models.Rentals;
 
+    using Realpoint.Stf.RealpointWeb.Interfaces.FractionalOwnership.FractionalOwnershipContact;
+    using Realpoint.Stf.RealpointWeb.Models.FractionalOwnership.FractionalOwnershipContact;
+
     /// <summary>
     /// The demo corp web shell.
     /// </summary>
@@ -62,6 +65,9 @@ namespace Realpoint.Stf.RealpointWeb
             stfContainer.RegisterType<IHome, Home>();
             stfContainer.RegisterType<IOurService, OurService>();
             stfContainer.RegisterType<IRentals, Rentals>();
+
+            stfContainer.RegisterType<IFractionalOwnershipContact, FractionalOwnershipContact>();
+
         }
 
         /// <summary>

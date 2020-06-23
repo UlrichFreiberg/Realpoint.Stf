@@ -12,6 +12,7 @@ namespace Realpoint.Stf.RealpointWeb.Models.FractionalOwnership
 {
     using Realpoint.Stf.RealpointWeb.Interfaces;
     using Realpoint.Stf.RealpointWeb.Interfaces.FractionalOwnership;
+    using Realpoint.Stf.RealpointWeb.Interfaces.FractionalOwnership.FractionalOwnershipContact;
 
     /// <summary>
     /// The fractional ownership.
@@ -28,5 +29,21 @@ namespace Realpoint.Stf.RealpointWeb.Models.FractionalOwnership
             : base(realpointWebShell)
         {
         }
+
+
+        /// <summary>
+        /// The contact.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="IFractionalOwnershipContact"/>.
+        /// </returns>
+        public IFractionalOwnershipContact FractionalOwnershipContact()
+        {
+
+            var retVal = StfContainer.Get<IFractionalOwnershipContact>();
+
+            return retVal;
+        }
+
     }
 }
