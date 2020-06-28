@@ -39,11 +39,9 @@ namespace Realpoint.Stf.RealpointWeb.Models.FractionalOwnership
         /// </returns>
         public IFractionalOwnershipContact FractionalOwnershipContact()
         {
-
-            var retVal = StfContainer.Get<IFractionalOwnershipContact>();
+            var retVal = Get<IFractionalOwnershipContact>();
 
             return retVal;
         }
-
     }
 }
