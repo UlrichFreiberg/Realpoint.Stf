@@ -68,6 +68,8 @@ namespace Realpoint.Stf.RealpointWeb
 
             stfContainer.RegisterType<IFractionalOwnershipContact, FractionalOwnershipContact>();
 
+            stfContainer.RegisterType<IRegion, Region>();
+
         }
 
         /// <summary>

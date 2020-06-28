@@ -15,5 +15,15 @@ namespace Realpoint.Stf.RealpointWeb.Interfaces.DiscoverItaly
     /// </summary>
     public interface IDiscoverItaly
     {
+        /// <summary>
+        /// Selects a region
+        /// </summary>
+        /// <param name="regionName">
+        /// Name of region
+        /// </param>
+        /// <returns>
+        /// Model object for a region or null if not found
+        /// </returns>
+        IRegion SelectRegion(string regionName);
     }
 }

@@ -17,47 +17,28 @@ namespace Realpoint.Stf.RealpointWeb.Models.DiscoverItaly
     /// <summary>
     /// The discover italy.
     /// </summary>
-    public class DiscoverItaly : RealpointWebShellModelBase, IDiscoverItaly
+    public class Region : RealpointWebShellModelBase, IRegion
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="DiscoverItaly"/> class.
+        /// Initializes a new instance of the <see cref="Region"/> class.
         /// </summary>
         /// <param name="realpointWebShell">
         /// The realpoint web shell.
         /// </param>
-        public DiscoverItaly(IRealpointWebShell realpointWebShell)
+        public Region(IRealpointWebShell realpointWebShell)
             : base(realpointWebShell)
         {
         }
 
-        /// <summary>
-        /// Selects a region
-        /// </summary>
-        /// <param name="regionName">
-        /// Name of region
-        /// </param>
-        /// <returns>
-        /// Model object for a region or null if not found
-        /// </returns>
-        public IRegion SelectRegion(string regionName)
+        public string Name
+
         {
-            var success = WebAdapter.SelectElementSetText(By.Id("RPDiscoveryPageList"), regionName);
-
-            if (! success)
+            get
             {
-                return null;
+                var retVal = WebAdapter.GetText(By.XPath("//h3"), 3);
+
+                return retVal;
             }
-
-            success = WebAdapter.ButtonClickById("RPDiscoveryPageListButton");
-
-            if (!success)
-            {
-                return null;
-            }
-
-            var retVal = Get<IRegion>();
-
-            return retVal;
         }
     }
 }
