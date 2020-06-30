@@ -80,6 +80,7 @@ namespace Realpoint.Stf.RealpointWeb
             stfContainer.RegisterType<Interfaces.PropertySearch.IPropertySearch, Models.PropertySearch.PropertySearch>();
             stfContainer.RegisterType<Interfaces.PropertySearch.IPropertySearchResult, Models.PropertySearch.PropertySearchResult>();
             stfContainer.RegisterType<Interfaces.PropertySearch.IPropertySheet, Models.PropertySearch.PropertySheet>();
+            stfContainer.RegisterType<Interfaces.PropertySearch.IPropertyEnquiry, Models.PropertySearch.PropertyEnquiry>();
         }
     }
 }

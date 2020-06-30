@@ -112,6 +112,7 @@
     <Compile Include="Interfaces\FractionalOwnership\IFractionalOwnership.cs" />
     <Compile Include="Interfaces\Home\IHome.cs" />
     <Compile Include="Interfaces\OurService\IOurService.cs" />
+    <Compile Include="Interfaces\PropertySearch\IPropertyEnquiry.cs" />
     <Compile Include="Interfaces\PropertySearch\IPropertySearch.cs" />
     <Compile Include="Interfaces\IRealpointWebShell.cs" />
     <Compile Include="Interfaces\Rentals\IRentals.cs" />
@@ -125,6 +126,7 @@
     <Compile Include="Interfaces\PropertySearch\IPropertySheet.cs" />
     <Compile Include="Models\Home\Home.cs" />
     <Compile Include="Models\OurService\OurService.cs" />
+    <Compile Include="Models\PropertySearch\PropertyEnquiry.cs" />
     <Compile Include="Models\PropertySearch\PropertySearch.cs" />
     <Compile Include="MenuManager.cs" />
     <Compile Include="Models\PropertySearch\PropertySearchResult.cs" />

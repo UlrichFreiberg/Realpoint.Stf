@@ -42,5 +42,18 @@ namespace Realpoint.Stf.RealpointWeb.Models.PropertySearch
                 return retVal;
             }
         }
+
+        /// <summary>
+        /// The Property Enquiry
+        /// </summary>
+        /// <returns>
+        /// The <see cref="IPropertyEnquiry"/>.
+        /// </returns>
+        public IPropertyEnquiry PropertyEnquiry()
+        {
+            var retVal = Get<IPropertyEnquiry>();
+
+            return retVal;
+        }
     }
 }

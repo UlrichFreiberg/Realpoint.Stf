@@ -19,5 +19,13 @@ namespace Realpoint.Stf.RealpointWeb.Interfaces.PropertySearch
         /// Gets the current displayed url.
         /// </summary>
         string Url { get; }
+
+        /// <summary>
+        /// The Property Enquiry.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="IPropertyEnquiry"/>.
+        /// </returns>
+        IPropertyEnquiry PropertyEnquiry();
     }
 }
