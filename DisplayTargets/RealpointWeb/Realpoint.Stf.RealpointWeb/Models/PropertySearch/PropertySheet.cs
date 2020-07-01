@@ -10,6 +10,8 @@
 
 namespace Realpoint.Stf.RealpointWeb.Models.PropertySearch
 {
+    using Mir.Stf.Utilities;
+    using OpenQA.Selenium;
     using Realpoint.Stf.RealpointWeb.Interfaces;
     using Realpoint.Stf.RealpointWeb.Interfaces.PropertySearch;
 
@@ -38,6 +40,25 @@ namespace Realpoint.Stf.RealpointWeb.Models.PropertySearch
             {
                 var mainUrl = WebAdapter.CurrentUrl; 
                 var retVal = mainUrl.Replace(RealpointWebShell.RpConfiguration.Url, string.Empty);
+
+                return retVal;
+            }
+        }
+
+        /// <summary>
+        /// Gets the reference.
+        /// </summary>
+
+        public string Reference
+        {
+            get
+            {
+                // TODO: improve getting the element by Xpath. I wanted to serach for TD where text was Reference and then get the next td contents 
+                // see PropertySheet page
+                // I feel also we should here assert if the elem is null 
+                // i just cant get StfAsset here ... how do I do that ? 
+                var elem = WebAdapter.FindElement(By.XPath("//table[@class='table table-bordered table-condensed']/tbody//tr[1]/td[2]/span"));                
+                var retVal = elem?.Text;
 
                 return retVal;
             }

@@ -8,6 +8,8 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.Dynamic;
+
 namespace Realpoint.Stf.RealpointWeb.Interfaces.PropertySearch
 {
     /// <summary>
@@ -19,6 +21,11 @@ namespace Realpoint.Stf.RealpointWeb.Interfaces.PropertySearch
         /// Gets the current displayed url.
         /// </summary>
         string Url { get; }
+
+        /// <summary>
+        /// Gets the reference.
+        /// </summary>
+        string Reference { get;  }
 
         /// <summary>
         /// The Property Enquiry.
