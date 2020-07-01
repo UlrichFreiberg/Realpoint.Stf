@@ -30,5 +30,13 @@ namespace Realpoint.Stf.RealpointWeb.Interfaces.PropertySearch
         /// The <see cref="IPropertySheet"/>.
         /// </returns>
         IPropertySheet OpenSearchResult(int i);
+
+        /// <summary>
+        /// The open random search result.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="IPropertySheet"/>.
+        /// </returns>
+        IPropertySheet OpenRandomSearchResult();
     }
 }

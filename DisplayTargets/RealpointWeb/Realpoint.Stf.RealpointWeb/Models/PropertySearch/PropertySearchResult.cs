@@ -10,6 +10,7 @@
 
 namespace Realpoint.Stf.RealpointWeb.Models.PropertySearch
 {
+    using System;
     using System.Linq;
 
     using OpenQA.Selenium;
@@ -75,5 +76,43 @@ namespace Realpoint.Stf.RealpointWeb.Models.PropertySearch
 
             return retVal;
         }
+
+        /// <summary>
+        /// The open random search result
+        /// </summary>
+        /// <returns>
+        /// The <see cref="IPropertySheet"/>.
+        /// </returns>
+        public IPropertySheet OpenRandomSearchResult()
+        {
+            var hits = WebAdapter.FindElements(By.XPath("//div[@data-ng-repeat='item in source.data']"));
+
+            if (hits.Count < 1) 
+            {
+                return null;
+            }
+
+            var elementAt = 0;
+            if (hits.Count == 1)
+            {
+                elementAt = 1;
+            }
+            else
+            {
+                Random r = new Random();
+                elementAt = r.Next(1, hits.Count);
+            }
+
+            var result = hits.ElementAt(elementAt);
+            var moreButton = result.FindElement(By.XPath(".//a[normalize-space() = 'More...']"));
+
+            moreButton.Click();
+            WebAdapter.WaitForJQueryNotActive();
+
+            var retVal = Get<IPropertySheet>();
+
+            return retVal;
+        }
+
     }
 }
