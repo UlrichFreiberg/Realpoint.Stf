@@ -92,26 +92,14 @@ namespace Realpoint.Stf.RealpointWeb.Models.PropertySearch
                 return null;
             }
 
-            var elementAt = 0;
-            if (hits.Count == 1)
-            {
-                elementAt = 1;
-            }
-            else
+            var elementAt = 1;
+            if (hits.Count > 1)
             {
                 Random r = new Random();
                 elementAt = r.Next(1, hits.Count);
             }
 
-            var result = hits.ElementAt(elementAt);
-            var moreButton = result.FindElement(By.XPath(".//a[normalize-space() = 'More...']"));
-
-            moreButton.Click();
-            WebAdapter.WaitForJQueryNotActive();
-
-            var retVal = Get<IPropertySheet>();
-
-            return retVal;
+            return OpenSearchResult(elementAt);
         }
 
     }
