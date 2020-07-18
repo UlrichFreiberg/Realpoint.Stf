@@ -50,15 +50,32 @@ namespace Realpoint.Stf.RealpointWeb.Models.PropertySearch
         }
 
         /// <summary>
-        /// The open search result.
+        /// The Title Label
         /// </summary>
-        /// <param name="i">
-        /// The i.
-        /// </param>
         /// <returns>
         /// The <see cref="IPropertySheet"/>.
         /// </returns>
-        public IPropertySheet OpenSearchResult(int i)
+        public string TitleLabel
+        {
+            get
+            {
+                var retVal = WebAdapter.GetText(By.Id("dnn_ctr3483_Title_titleLabel"));
+
+                return retVal;
+            }
+        }
+
+
+    /// <summary>
+    /// The open search result.
+    /// </summary>
+    /// <param name="i">
+    /// The i.
+    /// </param>
+    /// <returns>
+    /// The <see cref="IPropertySheet"/>.
+    /// </returns>
+    public IPropertySheet OpenSearchResult(int i)
         {
             var hits = WebAdapter.FindElements(By.XPath("//div[@data-ng-repeat='item in source.data']"));
 

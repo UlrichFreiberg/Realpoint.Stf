@@ -21,6 +21,11 @@ namespace Realpoint.Stf.RealpointWeb.Interfaces.PropertySearch
         bool SingleSearchResult { get; }
 
         /// <summary>
+        /// The Title label
+        /// </summary>
+        string TitleLabel { get; }
+
+        /// <summary>
         /// The open search result.
         /// </summary>
         /// <param name="i">
