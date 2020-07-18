@@ -14,6 +14,7 @@ namespace Realpoint.Stf.RealpointWeb.Models.PropertySearch
     using OpenQA.Selenium;
     using Realpoint.Stf.RealpointWeb.Interfaces;
     using Realpoint.Stf.RealpointWeb.Interfaces.PropertySearch;
+    using System;
 
     /// <summary>
     /// The property sheet.
@@ -38,7 +39,7 @@ namespace Realpoint.Stf.RealpointWeb.Models.PropertySearch
         {
             get
             {
-                var mainUrl = WebAdapter.CurrentUrl; 
+                var mainUrl = WebAdapter.CurrentUrl;
                 var retVal = mainUrl.Replace(RealpointWebShell.RpConfiguration.Url, string.Empty);
 
                 return retVal;
@@ -53,15 +54,38 @@ namespace Realpoint.Stf.RealpointWeb.Models.PropertySearch
         {
             get
             {
-                // TODO: improve getting the element by Xpath. I wanted to serach for TD where text was Reference and then get the next td contents 
-                // see PropertySheet page
-                // I feel also we should here assert if the elem is null 
-                // i just cant get StfAsset here ... how do I do that ? 
-                var elem = WebAdapter.FindElement(By.XPath("//table[@class='table table-bordered table-condensed']/tbody//tr[1]/td[2]/span"));                
-                var retVal = elem?.Text;
+                var xPath = GetXpathFor("Reference");
+                var retVal = WebAdapter.GetText(By.XPath(xPath));
 
                 return retVal;
             }
+        }
+
+        public string Location => GetValueForLabel("Location:");
+
+        public string PropertyEnquiryMessage
+        {
+            get
+            {
+                var retVal = WebAdapter.GetText(By.Id("dnn2961Message"));
+
+                return retVal;
+            }
+        }
+
+        private string GetValueForLabel(string label)
+        {
+            var xPath = GetXpathFor(label);
+            var retVal = WebAdapter.GetText(By.XPath(xPath));
+
+            return retVal;
+        }
+
+        private string GetXpathFor(string label)
+        {
+            var retVal = $"//table//td[text()='{label}']/../td/span";
+
+            return retVal;
         }
 
         /// <summary>

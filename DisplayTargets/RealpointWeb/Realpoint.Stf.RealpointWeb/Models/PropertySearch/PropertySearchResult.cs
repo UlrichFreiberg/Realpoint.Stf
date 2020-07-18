@@ -23,6 +23,8 @@ namespace Realpoint.Stf.RealpointWeb.Models.PropertySearch
     /// </summary>
     public class PropertySearchResult : RealpointWebShellModelBase, IPropertySearchResult
     {
+        private Random random = new Random();
+
         /// <summary>
         /// Initializes a new instance of the <see cref="PropertySearchResult"/> class.
         /// </summary>
@@ -87,17 +89,12 @@ namespace Realpoint.Stf.RealpointWeb.Models.PropertySearch
         {
             var hits = WebAdapter.FindElements(By.XPath("//div[@data-ng-repeat='item in source.data']"));
 
-            if (hits.Count < 1) 
+            if (hits.Count < 1)
             {
                 return null;
             }
 
-            var elementAt = 1;
-            if (hits.Count > 1)
-            {
-                Random r = new Random();
-                elementAt = r.Next(1, hits.Count);
-            }
+            var elementAt = hits.Count == 1 ? 1 : random.Next(1, hits.Count);
 
             return OpenSearchResult(elementAt);
         }

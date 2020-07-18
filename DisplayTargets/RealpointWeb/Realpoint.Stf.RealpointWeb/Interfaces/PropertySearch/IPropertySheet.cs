@@ -27,6 +27,8 @@ namespace Realpoint.Stf.RealpointWeb.Interfaces.PropertySearch
         /// </summary>
         string Reference { get;  }
 
+        string PropertyEnquiryMessage { get; }
+
         /// <summary>
         /// The Property Enquiry.
         /// </summary>

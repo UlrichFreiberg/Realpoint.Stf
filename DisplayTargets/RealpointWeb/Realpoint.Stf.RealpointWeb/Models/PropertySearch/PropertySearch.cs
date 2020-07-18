@@ -14,6 +14,7 @@ namespace Realpoint.Stf.RealpointWeb.Models.PropertySearch
 
     using Realpoint.Stf.RealpointWeb.Interfaces;
     using Realpoint.Stf.RealpointWeb.Interfaces.PropertySearch;
+    using System.Dynamic;
 
     /// <summary>
     /// The property search.
@@ -28,7 +29,17 @@ namespace Realpoint.Stf.RealpointWeb.Models.PropertySearch
         /// </param>
         public PropertySearch(IRealpointWebShell realpointWebShell)
             : base(realpointWebShell)
-        { 
+        {
+        }
+
+        public IPropertySearchResult PropertySearchResult
+        {
+            get
+            {
+                var retVal = Get<IPropertySearchResult>();
+
+                return retVal;
+            }
         }
 
         /// <summary>

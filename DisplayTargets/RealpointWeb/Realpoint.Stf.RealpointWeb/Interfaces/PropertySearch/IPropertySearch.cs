@@ -25,6 +25,8 @@ namespace Realpoint.Stf.RealpointWeb.Interfaces.PropertySearch
         /// </summary>
         string Keywords { get; set; }
 
+        IPropertySearchResult PropertySearchResult { get; }
+
         /// <summary>
         /// The search.
         /// </summary>
