@@ -43,5 +43,17 @@ namespace Realpoint.Stf.RealpointWeb.Interfaces.PropertySearch
         /// The <see cref="IPropertySheet"/>.
         /// </returns>
         IPropertySheet OpenRandomSearchResult();
+
+        /// <summary>
+        /// The implementation for checking if the peoperties in the search 
+        /// result are in the selected region
+        /// </summary>
+        /// <param name="selectedRegionName">
+        /// The selected region
+        /// </param>
+        /// <returns>
+        /// The result, false if .
+        /// </returns>
+        bool CheckSearchResultsInSelectedRegion(string selectedRegionName);
     }
 }

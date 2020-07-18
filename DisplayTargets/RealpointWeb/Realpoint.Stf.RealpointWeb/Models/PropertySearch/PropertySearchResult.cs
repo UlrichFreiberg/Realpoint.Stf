@@ -11,6 +11,7 @@
 namespace Realpoint.Stf.RealpointWeb.Models.PropertySearch
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
 
     using OpenQA.Selenium;
@@ -43,9 +44,7 @@ namespace Realpoint.Stf.RealpointWeb.Models.PropertySearch
         {
             get
             {
-                var hits = WebAdapter.FindElements(By.XPath("//div[@data-ng-repeat='item in source.data']"));
-
-                return hits.Count == 1;
+                return Hits.Count == 1;
             }
         }
 
@@ -77,7 +76,7 @@ namespace Realpoint.Stf.RealpointWeb.Models.PropertySearch
     /// </returns>
     public IPropertySheet OpenSearchResult(int i)
         {
-            var hits = WebAdapter.FindElements(By.XPath("//div[@data-ng-repeat='item in source.data']"));
+            var hits = Hits;
 
             if (i > hits.Count)
             {
@@ -96,6 +95,7 @@ namespace Realpoint.Stf.RealpointWeb.Models.PropertySearch
             return retVal;
         }
 
+
         /// <summary>
         /// The open random search result
         /// </summary>
@@ -104,7 +104,7 @@ namespace Realpoint.Stf.RealpointWeb.Models.PropertySearch
         /// </returns>
         public IPropertySheet OpenRandomSearchResult()
         {
-            var hits = WebAdapter.FindElements(By.XPath("//div[@data-ng-repeat='item in source.data']"));
+            var hits = Hits;
 
             if (hits.Count < 1)
             {
@@ -114,6 +114,68 @@ namespace Realpoint.Stf.RealpointWeb.Models.PropertySearch
             var elementAt = hits.Count == 1 ? 1 : random.Next(1, hits.Count);
 
             return OpenSearchResult(elementAt);
+        }
+
+        /// <summary>
+        /// The implementation for checking if the peoperties in the search 
+        /// result are in the selected region
+        /// </summary>
+        /// <param name="selectedRegionName">
+        /// The selected region
+        /// </param>
+        /// <returns>
+        /// The result, false if .
+        /// </returns>
+        public bool CheckSearchResultsInSelectedRegion(string selectedRegionName)
+        {
+            foreach (var hit in Hits)
+            {
+                if (!CheckSearchResultInSelectedRegion(hit, selectedRegionName))
+                {
+                    StfLogger.LogFail("CheckSearchResultsInSelectedRegion", "Search result is not in selectedRegion {0}", new string[]{ selectedRegionName });
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        private bool CheckSearchResultInSelectedRegion(IWebElement hit, string selectedRegionName)
+        {
+            var lines = hit.Text.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries);
+
+            if (lines.Length>1)
+            {
+                if (!lines[2].Contains(selectedRegionName))
+                {
+                    StfLogger.LogFail("CheckSearchResultInSelectedRegion", 
+                                      "Expected region name {0} is not in expected position in summary text {1}", 
+                                      new string[] { selectedRegionName, lines[2] });
+                    return false;
+                }
+                return true;
+            }
+            StfLogger.LogFail("CheckSearchResultInSelectedRegion",
+                              "Summary text format not as expected. {0} Expected region name in line 3",
+                              new string[] { lines.ToString() });
+            return false;
+        }
+
+
+        /// <summary>
+        /// The search Hits
+        /// </summary>
+        /// <returns>
+        /// The list of search hits
+        /// </returns>
+        private IReadOnlyCollection<IWebElement> Hits
+        {
+            get
+            {
+                var hits = WebAdapter.FindElements(By.XPath("//div[@data-ng-repeat='item in source.data']"));
+
+                return hits;
+            }
         }
 
     }
