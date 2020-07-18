@@ -47,10 +47,14 @@ namespace Realpoint.Stf.WebTests
             const string selectedRegionName = "Calabria";
             var propertySearch = RealpointShell.PropertySearch();
 
+            StfAssert.IsNotNull("propertySearch", propertySearch);
+
             propertySearch.Region = selectedRegionName;
             propertySearch.Search();
 
             var propertySearchResult = propertySearch.PropertySearchResult;
+
+            StfAssert.IsNotNull("propertySearchResult", propertySearchResult);
 
             StfLogger.LogScreenshot(StfLogLevel.Info, "After Search");
 
