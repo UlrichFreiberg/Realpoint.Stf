@@ -113,5 +113,26 @@ namespace Realpoint.Stf.RealpointWeb.Models.PropertySearch
                 WebAdapter.TextboxSetTextByXpath("//input[@data-fieldid='262']", value);
             }
         }
+
+
+        /// <summary>
+        /// Gets or sets the region.
+        /// </summary>
+        public string Region
+        {
+            get
+            {
+                var elem = WebAdapter.FindElement(By.Id("dnn3102Region"));
+                var retVal = elem?.Text;
+
+                return retVal;
+            }
+            set
+            {
+                var success = WebAdapter.SelectElementSetText(By.Id("dnn3102Region"), value);
+            }
+        }
     }
+
+
 }

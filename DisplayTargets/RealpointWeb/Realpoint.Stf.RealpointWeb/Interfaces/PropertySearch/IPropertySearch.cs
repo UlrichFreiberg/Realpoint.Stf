@@ -25,6 +25,12 @@ namespace Realpoint.Stf.RealpointWeb.Interfaces.PropertySearch
         /// </summary>
         string Keywords { get; set; }
 
+        /// <summary>
+        /// Gets or sets the region.
+        /// </summary>
+        string Region { get; set; }
+
+
         IPropertySearchResult PropertySearchResult { get; }
 
         /// <summary>
