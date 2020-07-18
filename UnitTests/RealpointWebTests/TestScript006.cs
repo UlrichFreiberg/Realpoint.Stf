@@ -44,12 +44,12 @@ namespace Realpoint.Stf.WebTests
         [TestMethod]
         public void Ts006()
         {
-            const string selectedRegionName = "Calabria";
             var propertySearch = RealpointShell.PropertySearch();
 
             StfAssert.IsNotNull("propertySearch", propertySearch);
 
-            propertySearch.Region = selectedRegionName;
+            var selectedRegionName = propertySearch.SelectRandomRegion();
+
             propertySearch.Search();
 
             var propertySearchResult = propertySearch.PropertySearchResult;
