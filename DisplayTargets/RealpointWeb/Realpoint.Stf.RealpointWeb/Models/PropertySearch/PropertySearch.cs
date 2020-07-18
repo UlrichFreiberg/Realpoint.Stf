@@ -14,6 +14,7 @@ namespace Realpoint.Stf.RealpointWeb.Models.PropertySearch
 
     using Realpoint.Stf.RealpointWeb.Interfaces;
     using Realpoint.Stf.RealpointWeb.Interfaces.PropertySearch;
+    using System;
     using System.Dynamic;
 
     /// <summary>
@@ -21,6 +22,8 @@ namespace Realpoint.Stf.RealpointWeb.Models.PropertySearch
     /// </summary>
     public class PropertySearch : RealpointWebShellModelBase, IPropertySearch
     {
+        private Random random = new Random();
+
         /// <summary>
         /// Initializes a new instance of the <see cref="PropertySearch"/> class.
         /// </summary>
@@ -122,8 +125,7 @@ namespace Realpoint.Stf.RealpointWeb.Models.PropertySearch
         {
             get
             {
-                var elem = WebAdapter.FindElement(By.Id("dnn3102Region"));
-                var retVal = elem?.Text;
+                var retVal = WebAdapter.SelectElementGetText(By.Id("dnn3102Region"));
 
                 return retVal;
             }
@@ -131,6 +133,26 @@ namespace Realpoint.Stf.RealpointWeb.Models.PropertySearch
             {
                 var success = WebAdapter.SelectElementSetText(By.Id("dnn3102Region"), value);
             }
+        }
+
+        /// <summary>
+        /// Select a Random region
+        /// </summary>
+        public string SelectRandomRegion()
+        {
+            var listOfRegions = WebAdapter.GetText(By.Id("dnn3102Region"));
+
+            // TODO: Check with Ulrich for these newline characters
+            var lines = listOfRegions.Split( new[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries);
+
+            // TODO : Ask Ulrich how to fail fast here. 
+            // This assumes that two extra entries in list ("Please select" and "All Regions")
+            // How do I handle (by assert ?) if the lines.length < 2) 
+            var randomRegion = lines[random.Next(2, lines.Length)];
+
+            Region = randomRegion;
+
+            return randomRegion;
         }
     }
 

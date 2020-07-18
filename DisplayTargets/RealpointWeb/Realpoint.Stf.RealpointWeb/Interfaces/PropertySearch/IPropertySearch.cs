@@ -30,6 +30,10 @@ namespace Realpoint.Stf.RealpointWeb.Interfaces.PropertySearch
         /// </summary>
         string Region { get; set; }
 
+        /// <summary>
+        /// Select a Random region
+        /// </summary>
+        string SelectRandomRegion();
 
         IPropertySearchResult PropertySearchResult { get; }
 
