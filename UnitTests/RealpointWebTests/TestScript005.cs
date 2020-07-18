@@ -45,12 +45,7 @@ namespace Realpoint.Stf.WebTests
         public void Ts005()
         {
             var propertySearch = RealpointShell.PropertySearch();
-
-            // Can we improve this as when PropertySearch page opens it has 
-            // already made a search but to get a propertySearch result object we 
-            // need to call Search in the model. 
-            // So we search twice
-            var propertySearchResult = propertySearch.Search();
+            var propertySearchResult = propertySearch.PropertySearchResult;
 
             StfLogger.LogScreenshot(StfLogLevel.Info, "After Search");
 
@@ -58,11 +53,7 @@ namespace Realpoint.Stf.WebTests
             var propertySheet = propertySearchResult.OpenRandomSearchResult();
             StfAssert.IsNotNull("Random property sheet ", propertySheet);
 
-            // get the message text in the property enquiry on the property sheet 
-            var propertyEnquiry = propertySheet.PropertyEnquiry();
-            StfAssert.IsNotNull("Property enquiry on the property sheet ", propertyEnquiry);
-
-            var message = propertyEnquiry.Message;
+            var message = propertySheet.PropertyEnquiryMessage;
             var reference = propertySheet.Reference;
 
             StfLogger.LogScreenshot(StfLogLevel.Info, "Property Sheet");

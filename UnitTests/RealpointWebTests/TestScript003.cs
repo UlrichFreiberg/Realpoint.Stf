@@ -44,12 +44,18 @@ namespace Realpoint.Stf.WebTests
         [TestMethod]
         public void Ts003()
         {
+            const string selectedRegionName = "Puglia";
             var discoverItaly = RealpointShell.DiscoverItaly();
-            var region = discoverItaly.SelectRegion("Puglia");
+            
+            StfAssert.IsNotNull("discoverItaly", discoverItaly);
+
+            var region = discoverItaly.SelectRegion(selectedRegionName);
+
+            StfAssert.IsNotNull("region", region);
+
             var regionName = region.Name;
 
-            // Check that we are on Pugli page
-            StfAssert.StringEqualsCi("Region is indeed Puglia", "Puglia", regionName);
+            StfAssert.StringEqualsCi("Region is indeed the selected region", selectedRegionName, regionName);
         }
     }
 }
